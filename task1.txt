@@ -1,0 +1,10 @@
+# Вариант 1
+SELECT * FROM article
+LEFT JOIN comment ON article.id = comment.article_id
+WHERE comment.id is NULL
+
+# Вариант 2
+SELECT * FROM article
+WHERE article.id NOT IN (
+    SELECT DISTINCT article_id FROM comment
+)
